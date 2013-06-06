@@ -5,15 +5,15 @@ import java.util.Date;
 import javax.persistence.*;
 
 /**
- * The persistent class for the SPECTACLE database table.
+ * The persistent class for the GEEK database table.
  * 
  */
 @Entity
 public class Geek {
 	
 	@Id
-	@SequenceGenerator(name="SPECTACLE_ID_GENERATOR", initialValue=1, sequenceName="ID_SEQUENCE")
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SPECTACLE_ID_GENERATOR")
+	@SequenceGenerator(name="GEEK_ID_GENERATOR", initialValue=1, sequenceName="ID_SEQUENCE")
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="GEEK_ID_GENERATOR")
 	private long id;
 	private String pseudo;
 	private String nom;

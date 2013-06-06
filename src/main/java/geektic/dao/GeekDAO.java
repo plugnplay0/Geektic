@@ -21,6 +21,12 @@ public class GeekDAO {
 		entitymanager.persist(geek);
 	}
 	
+	public List<Geek> findAll() {
+		String jpql = "select g from GEEK as g";
+		TypedQuery<Geek> query = entitymanager.createQuery(jpql, Geek.class);
+		return query.getResultList();
+	}
+	
 	public Geek findById(long id) {
 		return entitymanager.find(Geek.class, id);
 	}

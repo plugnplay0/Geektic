@@ -17,6 +17,11 @@ public class GeekService {
 	@Autowired
 	GeekDAO geekDAO;
 	
+	public List<Geek> listerTous() {
+		List<Geek> liste = geekDAO.findAll();
+		return liste;
+	}
+	
 	public Geek trouverParId(long id) {
 		Geek geek = geekDAO.findById(id);
 		return geek;
