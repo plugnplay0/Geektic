@@ -25,8 +25,15 @@
 				margin-bottom: 15px;
 				padding: 7px 9px;
 			}
+			div.submit {
+				margin-bottom: 10px;
+			}
+			div.submit input {
+				font-size: 14pt;
+				height: 40px;
+			}
 			.form-signin {
-				max-width: 500px;
+				max-width: 570px;
 				padding: 19px 29px 29px;
 				margin: 0 auto 20px;
 				background-color: orange;
@@ -49,7 +56,7 @@
 	
 	<body>
 		<form class="form-signin" id="rechercheForm" method="get" action="/rechercher">
-			<h2 class="form-signin-heading">Rechercher un geek ou une geekette</h2>
+			<div class="submit" align="center"><input type="submit" value="Lancer la recherche"/></div>
 			<fieldset>
 				<legend>Recherche par identité</legend>
 				<input type="text" name="pseudo" placeholder="Pseudo"/><br/>
@@ -72,6 +79,7 @@
 					<label class="checkbox"><input type="checkbox" name="interet" value="${interet.id}"/><c:out value="${interet.libelle}"/></label>
 				</c:forEach>
 			</fieldset>
+			<input type="submit" value="Rechercher"/>
 		</form>
 	</body>
 	
