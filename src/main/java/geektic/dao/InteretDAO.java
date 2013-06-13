@@ -1,5 +1,7 @@
 package geektic.dao;
 
+
+
 import geektic.model.Interet;
 
 import java.util.List;
@@ -22,7 +24,7 @@ public class InteretDAO {
 	}
 	
 	public List<Interet> findAll() {
-		String jpql = "select i from INTERET as i";
+		String jpql = "select i from Interet as i";
 		TypedQuery<Interet> query = entitymanager.createQuery(jpql, Interet.class);
 		return query.getResultList();
 	}

@@ -23,7 +23,7 @@ public class InteretController {
 	public ModelAndView listerInterets() {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("Accueil");
-		//mav.addObject("interets", interetService.listerTous());
+		mav.addObject("interets", interetService.listerTous());
 		return mav;
 	}
 	

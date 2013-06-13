@@ -8,12 +8,48 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<title>Geektic</title>
-		<link rel="stylesheet" type="text/css" href="/Geektic/css/bootstrap/css/bootstrap.css"/>
+		<link rel="stylesheet" type="text/css" href="/Geektic/css/bootstrap.css"/>
+		<style type="text/css">
+			body {
+				background-image: url("/Geektic/images/Background-Geek-Love.png");
+				background-repeat: no-repeat;
+				background-position: fixed;
+				background-size: cover;
+			}
+			.form-signin .form-signin-heading {
+				margin-bottom: 10px;
+			}
+			.form-signin input[type="text"], .form-signin input[type="password"] {
+				font-size: 16px;
+				height: auto;
+				margin-bottom: 15px;
+				padding: 7px 9px;
+			}
+			.form-signin {
+				max-width: 500px;
+				padding: 19px 29px 29px;
+				margin: 0 auto 20px;
+				background-color: orange;
+				border: 1px solid #e5e5e5;
+				-webkit-border-radius: 5px;
+				-moz-border-radius: 5px;
+				border-radius: 5px;
+				-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+				-moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+				box-shadow: 0 1px 2px rgba(0,0,0,.05);
+			}
+			input.radioSexe {
+				margin-top: 12px;
+			}
+			img.imgSexe {
+				max-height: 40px;
+			}
+		</style>
 	</head>
 	
 	<body>
-		<h1>Rechercher un geek ou une geekette</h1>
-		<form id="rechercheForm" method="get" action="/rechercher">
+		<form class="form-signin" id="rechercheForm" method="get" action="/rechercher">
+			<h2 class="form-signin-heading">Rechercher un geek ou une geekette</h2>
 			<fieldset>
 				<legend>Recherche par identité</legend>
 				<input type="text" name="pseudo" placeholder="Pseudo"/><br/>
@@ -22,21 +58,19 @@
 			</fieldset>
 			<fieldset>
 				<legend>Recherche par sexe</legend>
-				<input type="radio" name="sexe" value="h"/>Geek<br/>
-				<input type="radio" name="sexe" value="f"/>Geekette<br/>
+				<label class="radio"><input class="radioSexe" type="radio" name="sexe" value="h"/><img class="imgSexe" src="/Geektic/images/Geek.png"/></label>
+				<label class="radio"><input class="radioSexe" type="radio" name="sexe" value="f"/><img class="imgSexe" src="/Geektic/images/Geekette.png"/></label>
 			</fieldset>
 			<fieldset>
 				<legend>Recherche par âge</legend>
-				Mini :<input type="text" name="agemin"/><br/>
-				Maxi :<input type="text" name="agemax"/><br/>
+				Mini :&nbsp;&nbsp;<input type="text" name="agemin"/><br/>
+				Maxi :&nbsp;&nbsp;<input type="text" name="agemax"/><br/>
 			</fieldset>
 			<fieldset>
 				<legend>Recherche par centres d'intérêt</legend>
-				<!--
 				<c:forEach var="interet" items="${interets}">
-					<input type="checkbox" name="interet" value="${interet.id}"/><c:out value="${interet.libelle}"/>
+					<label class="checkbox"><input type="checkbox" name="interet" value="${interet.id}"/><c:out value="${interet.libelle}"/></label>
 				</c:forEach>
-				-->
 			</fieldset>
 		</form>
 	</body>
