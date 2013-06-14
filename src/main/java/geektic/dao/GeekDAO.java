@@ -22,7 +22,7 @@ public class GeekDAO {
 	}
 	
 	public List<Geek> findAll() {
-		String jpql = "select g from GEEK as g";
+		String jpql = "select g from Geek as g";
 		TypedQuery<Geek> query = entitymanager.createQuery(jpql, Geek.class);
 		return query.getResultList();
 	}
@@ -35,9 +35,9 @@ public class GeekDAO {
 		return entitymanager.find(Geek.class, pseudo);
 	}
 	
-	public List<Geek> findBySexe(char sexe) {
-		String jpql = "select g from GEEK as g " +
-						"where  g.sexe = :sexe ";
+	public List<Geek> findBySexe(String sexe) {
+		String jpql = "select g from Geek as g " +
+						"where g.sexe = :sexe";
 		TypedQuery<Geek> query = entitymanager.createQuery(jpql, Geek.class);
 		query.setParameter("sexe", sexe);
 		return query.getResultList();

@@ -9,53 +9,11 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<title>Geektic</title>
 		<link rel="stylesheet" type="text/css" href="/Geektic/css/bootstrap.css"/>
-		<style type="text/css">
-			body {
-				background-image: url("/Geektic/images/Background-Geek-Love.png");
-				background-repeat: no-repeat;
-				background-position: fixed;
-				background-size: cover;
-			}
-			.form-signin .form-signin-heading {
-				margin-bottom: 10px;
-			}
-			.form-signin input[type="text"], .form-signin input[type="password"] {
-				font-size: 16px;
-				height: auto;
-				margin-bottom: 15px;
-				padding: 7px 9px;
-			}
-			div.submit {
-				margin-bottom: 10px;
-			}
-			div.submit input {
-				font-size: 14pt;
-				height: 40px;
-			}
-			.form-signin {
-				max-width: 570px;
-				padding: 19px 29px 29px;
-				margin: 0 auto 20px;
-				background-color: orange;
-				border: 1px solid #e5e5e5;
-				-webkit-border-radius: 5px;
-				-moz-border-radius: 5px;
-				border-radius: 5px;
-				-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
-				-moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
-				box-shadow: 0 1px 2px rgba(0,0,0,.05);
-			}
-			input.radioSexe {
-				margin-top: 12px;
-			}
-			img.imgSexe {
-				max-height: 40px;
-			}
-		</style>
+		<link rel="stylesheet" type="text/css" href="/Geektic/css/specific.css"/>
 	</head>
 	
 	<body>
-		<form class="form-signin" id="rechercheForm" method="get" action="/rechercher">
+		<form class="form-signin" id="rechercheForm" method="get" action="/Geektic/accueil/rechercher">
 			<div class="submit" align="center"><input type="submit" value="Lancer la recherche"/></div>
 			<fieldset>
 				<legend>Recherche par identité</legend>
@@ -65,7 +23,7 @@
 			</fieldset>
 			<fieldset>
 				<legend>Recherche par sexe</legend>
-				<label class="radio"><input class="radioSexe" type="radio" name="sexe" value="h"/><img class="imgSexe" src="/Geektic/images/Geek.png"/></label>
+				<label class="radio"><input class="radioSexe" type="radio" name="sexe" value="h"/><img class="imgSexe" src="/Geektic/images/Geek.png" alt="Geek"/></label>
 				<label class="radio"><input class="radioSexe" type="radio" name="sexe" value="f"/><img class="imgSexe" src="/Geektic/images/Geekette.png"/></label>
 			</fieldset>
 			<fieldset>

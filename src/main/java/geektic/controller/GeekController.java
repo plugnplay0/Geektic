@@ -10,7 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 @Controller
-@RequestMapping("/geek")
+@RequestMapping("/profil")
 public class GeekController {
 
 	@Autowired

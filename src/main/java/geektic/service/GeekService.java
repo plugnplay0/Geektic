@@ -32,7 +32,7 @@ public class GeekService {
 		return geek;
 	}
 	
-	public List<Geek> trouverParSexe(char sexe) {
+	public List<Geek> trouverParSexe(String sexe) {
 		List<Geek> liste = geekDAO.findBySexe(sexe);
 		return liste;
 	}
