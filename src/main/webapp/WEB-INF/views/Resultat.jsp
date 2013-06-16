@@ -17,17 +17,19 @@
 			<div class="submit" align="center"><a href="/Geektic/accueil"><input type="button" value="Retourner aux critères"/></a></div>
 			<table>
 				<tr>
-					<th>ID</th>
-					<th>Pseudo</th>
-					<th>Sexe</th>
-					<th>Age</th>
-					<th>Centres d'intérêt</th>
+					<th class="cell10">ID</th>
+					<th class="cell20">Pseudo</th>
+					<th class="cell10">Sexe</th>
+					<th class="cell10">Age </th>
+					<th class="cell50">Centres d'intérêt</th>
 				</tr>
 				<c:forEach var="geek" items="${geeks}">
 					<tr>
-						<td>${geek.id}</td>
-						<td><a href="/Geektic/profil?id=${geek.id}"><c:out value="${geek.pseudo}"/></a></td>
-						<td>
+						<td class="cell10">${geek.geekId}</td>
+						<td class="cell20">
+							<a href="/Geektic/profil?geekId=${geek.geekId}"><c:out value="${geek.pseudo}"/></a>
+						</td>
+						<td class="cell10">
 							<c:if test="${geek.sexe eq 'h'}">
 								<img class="imgSexe" src="/Geektic/images/Geek.png" alt="Geek"/>
 							</c:if>
@@ -35,9 +37,11 @@
 								<img class="imgSexe" src="/Geektic/images/Geekette.png" alt="Geekette"/>
 							</c:if>
 						</td>
-						<td>${geek.age}</td>
-						<td>
-							geek.interets
+						<td class="cell10">${geek.age}</td>
+						<td class="cell50 centresInteret">
+							<c:forEach var="interet" items="${geek.interets}">
+								${interet.libelle}&nbsp;&nbsp;
+							</c:forEach>
 						</td>
 					</tr>
 				</c:forEach>

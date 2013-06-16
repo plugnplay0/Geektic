@@ -7,7 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 
 /**
@@ -20,19 +22,22 @@ public class Interet {
 	@Id
 	@SequenceGenerator(name="INTERET_ID_GENERATOR", initialValue=1, sequenceName="ID_SEQUENCE")
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="INTERET_ID_GENERATOR")
-	private long id;
+	private long interetId;
 	
-	private String type;
+	@ManyToOne
+	@JoinColumn(name="typeId")
+	private Type type;
+	
 	private String libelle;
 	
-	@ManyToMany(mappedBy="interet")
+	@ManyToMany(mappedBy="interets")
 	private List<Geek> geeks = new ArrayList<Geek>();
 	
-	public long getId() {
-		return id;
+	public long getInteretId() {
+		return interetId;
 	}
 	
-	public String getType() {
+	public Type getType() {
 		return type;
 	}
 	

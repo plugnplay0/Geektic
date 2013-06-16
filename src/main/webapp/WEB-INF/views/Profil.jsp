@@ -6,15 +6,15 @@
 <html>
 
 	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
 		<title>Geektic - Profil de <c:out value="${geek.pseudo}"/></title>
 		<link rel="stylesheet" type="text/css" href="/Geektic/css/bootstrap.css"/>
 		<link rel="stylesheet" type="text/css" href="/Geektic/css/specific.css"/>
 	</head>
 	
 	<body>
-		<form class="form-signin" id="resultForm" action="/accueil">
-			<div class="submit" align="center"><input type="submit" value="Retourner aux résultats"/></div>
+		<div class="form-signin">
+			<div class="submit" align="center"><a href="/Geektic/accueil"><input type="button" value="Retourner aux résultats"/></a></div>
 			<fieldset>
 				<legend>
 					<c:if test="${geek.sexe eq 'h'}">
@@ -38,12 +38,12 @@
 					Centres d'intérêt :<br/>
 					<ul>
 						<c:forEach var="interet" items="${geek.interets}">
-							<li><c:out value="${interet}"/></li>
+							<li><c:out value="${interet.libelle}"/></li>
 						</c:forEach>
 					</ul>
 				</p>
 			</fieldset>
-		</form>
+		</div>
 	</body>
 	
 </html>

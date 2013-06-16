@@ -1,14 +1,20 @@
-ï»¿body {
+body {
 	background-image: url("/Geektic/images/Background-Geek-Love.png");
 	background-repeat: no-repeat;
 	background-position: fixed;
 	background-size: cover;
 }
+
+
+/***************/
+/* Formulaires */
+/***************/
+
 .form-signin {
 	max-width: 570px;
 	padding: 19px 29px 29px;
 	margin: 0 auto 20px;
-	background-color: orange;
+	background-color:orange;
 	border: 1px solid #e5e5e5;
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
@@ -17,25 +23,72 @@
 	-moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
 	box-shadow: 0 1px 2px rgba(0,0,0,.05);
 }
+
 .form-signin .form-signin-heading {
 	margin-bottom: 10px;
 }
+
 .form-signin input[type="text"], .form-signin input[type="password"] {
 	font-size: 16px;
 	height: auto;
 	margin-bottom: 15px;
 	padding: 7px 9px;
 }
+
 div.submit {
 	margin-bottom: 10px;
 }
+
 div.submit input {
 	font-size: 14pt;
 	height: 40px;
 }
+
 input.radioSexe {
 	margin-top: 12px;
 }
+
 img.imgSexe {
 	max-height: 40px;
+}
+
+td {
+	border: 1px solid #e5e5e5;
+	text-align: center;
+	
+}
+
+
+/******************************/
+/* Tableau résultat recherche */
+/******************************/
+
+table{
+	width: 100%;	
+}
+
+th{
+	width:40px;
+	border: 1px solid #e5e5e5;
+}
+
+/* Colonne Centre d'intérêt */
+th.cell50, td.cell50 {
+	width:50%;
+}
+
+/* Colonne Pseudo */
+th.cell20, td.cell20 {
+	width:20%;
+}
+
+/* Colonnes Sexe et Age */
+th.cell10, td.cell10 {
+	width:10%
+}
+
+/* Colonne Centre d'intérêt */
+td.centresInteret {
+	text-align:left;
+	padding-left:10px;
 }

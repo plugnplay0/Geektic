@@ -1,6 +1,6 @@
 package geektic.controller;
 
-import geektic.service.InteretService;
+import geektic.service.TypeService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,7 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class AccueilController {
 
 	@Autowired
-	InteretService interetService;
+	TypeService typeService;
 	
 	public AccueilController() {
 		
@@ -23,7 +23,7 @@ public class AccueilController {
 	public ModelAndView listerInterets() {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("Accueil");
-		mav.addObject("interets", interetService.listerTous());
+		mav.addObject("types", typeService.listerTous());
 		return mav;
 	}
 	

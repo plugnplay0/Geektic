@@ -3,6 +3,7 @@ package geektic.service;
 import geektic.dao.GeekDAO;
 import geektic.model.Geek;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,4 +38,19 @@ public class GeekService {
 		return liste;
 	}
 	
+	public List<Geek> trouverSelonCriteres(
+			String pseudo,
+			String nom,
+			String prenom,
+			String sexe,
+			int agemin,
+			int agemax,
+			long interet1,
+			long interet2,
+			long interet3)
+	{
+		List<Geek> total = new ArrayList<Geek>();
+		
+		return total;
+	}
 }

@@ -1,4 +1,4 @@
-package geektic.controller;
+ package geektic.controller;
 
 import geektic.model.Geek;
 import geektic.service.GeekService;
@@ -23,8 +23,18 @@ public class RechercheController {
 		
 	}
 	
-	@RequestMapping(method = RequestMethod.GET, params="sexe")
-	public ModelAndView listerGeeks(@RequestParam("sexe") String sexe) {
+	@RequestMapping(method = RequestMethod.GET, params={"pseudo", "nom", "prenom", "sexe", "agemin", "agemax", "interet1", "interet2", "interet3"})
+	public ModelAndView listerGeeks(
+			@RequestParam("pseudo") String pseudo,
+			@RequestParam("nom") String nom,
+			@RequestParam("prenom") String prenom,
+			@RequestParam("agemin") int agemin,
+			@RequestParam("sexe") String sexe,
+			@RequestParam("agemax") int agemax,
+			@RequestParam("interet1") long interet1,
+			@RequestParam("interet2") long interet2,
+			@RequestParam("interet3") long interet3)
+	{
 		List<Geek> liste = geekService.trouverParSexe(sexe);
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("Resultat");

@@ -25,7 +25,7 @@ public class Geek {
 	@Id
 	@SequenceGenerator(name="GEEK_ID_GENERATOR", initialValue=1, sequenceName="ID_SEQUENCE")
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="GEEK_ID_GENERATOR")
-	private long id;
+	private long geekId;
 	
 	private String pseudo;
 	private String nom;
@@ -40,8 +40,8 @@ public class Geek {
 				inverseJoinColumns={@JoinColumn(name="interetId")})
 	private List<Interet> interets = new ArrayList<Interet>();
 	
-	public long getId() {
-		return id;
+	public long getGeekId() {
+		return geekId;
 	}
 	
 	public String getPseudo() {
