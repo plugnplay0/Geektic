@@ -35,7 +35,7 @@ public class RechercheController {
 			@RequestParam("interet2") long interet2,
 			@RequestParam("interet3") long interet3)
 	{
-		List<Geek> liste = geekService.trouverParSexe(sexe);
+		List<Geek> liste = geekService.trouverSelonCriteres(pseudo, nom, prenom, sexe, agemin, agemax, interet1, interet2, interet3);
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("Resultat");
 		mav.addObject("geeks", liste);

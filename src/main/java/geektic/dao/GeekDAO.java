@@ -14,6 +14,7 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
 import org.springframework.stereotype.Repository;
+import org.springframework.util.StringUtils;
 
 
 @Repository
@@ -40,6 +41,22 @@ public class GeekDAO {
 		return entitymanager.find(Geek.class, pseudo);
 	}
 	
+	/*public List<Geek> findByNom(String nom) {
+		String jpql =	"select g from Geek as g " +
+						"where g.nom like(:nom)";
+		TypedQuery<Geek> query = entitymanager.createQuery(jpql, Geek.class);
+		query.setParameter("nom", "%"+nom+"%");
+		return query.getResultList();
+	}
+	
+	public List<Geek> findByPrenom(String prenom) {
+		String jpql =	"select g from Geek as g " +
+						"where g.nom like(:prenom)";
+		TypedQuery<Geek> query = entitymanager.createQuery(jpql, Geek.class);
+		query.setParameter("prenom", "%"+prenom+"%");
+		return query.getResultList();
+	}*/
+	
 	public List<Geek> findBySexe(String sexe) {
 		String jpql =	"select g from Geek as g " +
 						"where g.sexe = :sexe";
@@ -53,16 +70,17 @@ public class GeekDAO {
 		CriteriaQuery<Geek> cq = qb.createQuery(Geek.class);
 		Root<Geek> geek = cq.from(Geek.class);
 		
+		//TODO prise en compte de la casse !
 		List<Predicate> predicates = new ArrayList<Predicate>();
-		if(!pseudo.equals(null)) {
-			predicates.add(qb.like(geek.<String>get("nom"), nom));
+		if(!StringUtils.isEmpty(nom)) {
+			predicates.add(qb.like(geek.<String>get("nom"), "%" + nom + "%"));
 		}
-		if(!nom.equals(null)) {
-			predicates.add(qb.like(geek.<String>get("prenom"), prenom));
+		if(!StringUtils.isEmpty(prenom)) {
+			predicates.add(qb.like(geek.<String>get("prenom"), "%" + prenom + "%"));
 		}
+		
 		cq.select(geek).where(predicates.toArray(new Predicate[]{}));
 		return entitymanager.createQuery(cq).getResultList();
-		
 	}
 	
 }

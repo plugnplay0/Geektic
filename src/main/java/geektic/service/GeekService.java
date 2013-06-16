@@ -49,8 +49,9 @@ public class GeekService {
 			long interet2,
 			long interet3)
 	{
-		List<Geek> total = new ArrayList<Geek>();
-		
+		List<Geek> total = geekDAO.findByCriteria(pseudo, nom, prenom, sexe, agemin, agemax, interet1, interet2, interet3);
+		//total.addAll(geekDAO.findByNom(nom));
+		//total.addAll(geekDAO.findByPrenom(prenom));
 		return total;
 	}
 }
