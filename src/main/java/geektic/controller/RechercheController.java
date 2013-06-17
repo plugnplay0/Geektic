@@ -2,7 +2,9 @@
 
 import geektic.model.Geek;
 import geektic.service.GeekService;
+import geektic.service.InteretService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +20,9 @@ public class RechercheController {
 
 	@Autowired
 	GeekService geekService;
+	
+	@Autowired
+	InteretService interetService;
 	
 	public RechercheController() {
 		
@@ -35,7 +40,27 @@ public class RechercheController {
 			@RequestParam("interet2") long interet2,
 			@RequestParam("interet3") long interet3)
 	{
-		List<Geek> liste = geekService.trouverSelonCriteres(pseudo, nom, prenom, sexe, agemin, agemax, interet1, interet2, interet3);
+		// Filtrer tous les geeks répondant aux critères de nom, prénom, sexe, âge min et âge max
+		List<Geek> liste = geekService.trouverSelonCriteres(pseudo, nom, prenom, sexe, agemin, agemax);
+		
+		// Filtrer tous les geeks répondant aux critères de centres d'intérêt
+		List<Geek> listeCI = new ArrayList<Geek>();
+		if(interet1 != 0) {
+			listeCI = (interetService.trouverParId(interet1)).getGeeks();
+		}
+		if(interet2 != 0) {
+			listeCI.addAll((interetService.trouverParId(interet2)).getGeeks());
+		}
+		if(interet2 != 0) {
+			listeCI.addAll((interetService.trouverParId(interet3)).getGeeks());
+		}
+		
+		// Ne conserver que l'intersection des deux ensembles
+		if(listeCI.size() > 0) {
+			liste.retainAll(listeCI);
+		}
+		
+		// Appeler la vue en lui fournissant la liste de geeks filtée
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("Resultat");
 		mav.addObject("geeks", liste);

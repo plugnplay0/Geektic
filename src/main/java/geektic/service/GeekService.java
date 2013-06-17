@@ -3,6 +3,7 @@ package geektic.service;
 import geektic.dao.GeekDAO;
 import geektic.model.Geek;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,26 +34,35 @@ public class GeekService {
 			String prenom,
 			String sexe,
 			int agemin,
-			int agemax,
-			long interet1,
-			long interet2,
-			long interet3)
+			int agemax)
 	{
 		// Pseudo, nom prénom et sexe
-		List<Geek> total = geekDAO.findByCriteria(pseudo, nom, prenom, sexe);
+		List<Geek> liste = geekDAO.findByCriteria(pseudo, nom, prenom, sexe);
 		
 		// Ages min et max
-		if((agemin != 0) && (agemax == 0)) {
-			total.addAll(geekDAO.findByAgeMin(agemin));
-		} else if((agemin == 0) && (agemax != 0)) {
-			total.addAll(geekDAO.findByAgeMax(agemax));
-		} else if((agemin != 0) && (agemax != 0)) {
-			total.addAll(geekDAO.findByAgeBetween(agemin, agemax));
+		List<Geek> aRetirer = new ArrayList<Geek>();
+		if(agemin != 0) {
+			for(Geek geek : liste) {
+				if(geek.getAge() < agemin) {
+					aRetirer.add(geek);
+				}
+			}
+		}
+		if(agemax != 0) {
+			for(Geek geek : liste) {
+				if(geek.getAge() > agemax) {
+					aRetirer.add(geek);
+				}
+			}
+		}
+		liste.removeAll(aRetirer);
+		
+		// Supprimer le geek 'flag' s'il y est
+		Geek flag = trouverParId(0);
+		if(liste.contains(flag)) {
+			liste.remove(flag);
 		}
 		
-		//Centres d'intérêt
-		
-		
-		return total;
+		return liste;
 	}
 }

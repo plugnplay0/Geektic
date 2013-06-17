@@ -37,20 +37,20 @@ public class GeekDAO {
 		return entitymanager.find(Geek.class, geekId);
 	}
 	
-	public List<Geek> findByAgeMin(int agemin) {
-		
-		return null;
-	}
-	
-	public List<Geek> findByAgeMax(int agemax) {
-			
-			return null;
+	/*public List<Geek> findByInteret(long interet) {
+		System.out.println("INTERET : " + interet);
+		List<Geek> liste = new ArrayList<Geek>();
+		String jpql =	"select Geek_Interet.geekId " +
+						"from Geek_Interet " +
+						"where Geek_Interet.interetId = :interet";
+		Query query = entitymanager.createQuery(jpql);
+		query.setParameter("interet", interet);
+		List<Long> geekIds = query.getResultList();
+		for(long id : geekIds) {
+			liste.add(findById(id));
 		}
-	
-	public List<Geek> findByAgeBetween(int agemin, int agemax) {
-		
-		return null;
-	}
+		return liste;
+	}*/
 	
 	public List<Geek> findByCriteria(String pseudo, String nom, String prenom, String sexe) {
 		CriteriaBuilder qb = entitymanager.getCriteriaBuilder();
