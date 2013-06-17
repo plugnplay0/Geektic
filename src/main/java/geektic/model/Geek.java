@@ -14,6 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Transient;
 
 /**
  * The persistent class for the GEEK database table.
@@ -39,6 +40,9 @@ public class Geek {
 				joinColumns={@JoinColumn(name="geekId")},
 				inverseJoinColumns={@JoinColumn(name="interetId")})
 	private List<Interet> interets = new ArrayList<Interet>();
+	
+	@Transient
+	private int age;
 	
 	public long getGeekId() {
 		return geekId;
@@ -76,12 +80,12 @@ public class Geek {
 		Calendar now = Calendar.getInstance();
 		Calendar naiss = Calendar.getInstance();
 		naiss.setTime(this.dtnaiss);
-		int age = now.get(Calendar.YEAR) - naiss.get(Calendar.YEAR);
-		now.add(Calendar.YEAR, -age);
+		int lAge = now.get(Calendar.YEAR) - naiss.get(Calendar.YEAR);
+		now.add(Calendar.YEAR, -lAge);
 		if(naiss.after(now)) {
-			age--;
+			lAge--;
 		}
-		return age;
+		return lAge;
 	}
 	
 }

@@ -3,7 +3,6 @@ package geektic.service;
 import geektic.dao.GeekDAO;
 import geektic.model.Geek;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,16 +27,6 @@ public class GeekService {
 		return geek;
 	}
 	
-	public Geek trouverParPseudo(String pseudo) {
-		Geek geek = geekDAO.findByPseudo(pseudo);
-		return geek;
-	}
-	
-	public List<Geek> trouverParSexe(String sexe) {
-		List<Geek> liste = geekDAO.findBySexe(sexe);
-		return liste;
-	}
-	
 	public List<Geek> trouverSelonCriteres(
 			String pseudo,
 			String nom,
@@ -49,9 +38,21 @@ public class GeekService {
 			long interet2,
 			long interet3)
 	{
-		List<Geek> total = geekDAO.findByCriteria(pseudo, nom, prenom, sexe, agemin, agemax, interet1, interet2, interet3);
-		//total.addAll(geekDAO.findByNom(nom));
-		//total.addAll(geekDAO.findByPrenom(prenom));
+		// Pseudo, nom prénom et sexe
+		List<Geek> total = geekDAO.findByCriteria(pseudo, nom, prenom, sexe);
+		
+		// Ages min et max
+		if((agemin != 0) && (agemax == 0)) {
+			total.addAll(geekDAO.findByAgeMin(agemin));
+		} else if((agemin == 0) && (agemax != 0)) {
+			total.addAll(geekDAO.findByAgeMax(agemax));
+		} else if((agemin != 0) && (agemax != 0)) {
+			total.addAll(geekDAO.findByAgeBetween(agemin, agemax));
+		}
+		
+		//Centres d'intérêt
+		
+		
 		return total;
 	}
 }

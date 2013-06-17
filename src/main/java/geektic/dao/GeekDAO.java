@@ -37,46 +37,42 @@ public class GeekDAO {
 		return entitymanager.find(Geek.class, geekId);
 	}
 	
-	public Geek findByPseudo(String pseudo) {
-		return entitymanager.find(Geek.class, pseudo);
+	public List<Geek> findByAgeMin(int agemin) {
+		
+		return null;
 	}
 	
-	/*public List<Geek> findByNom(String nom) {
-		String jpql =	"select g from Geek as g " +
-						"where g.nom like(:nom)";
-		TypedQuery<Geek> query = entitymanager.createQuery(jpql, Geek.class);
-		query.setParameter("nom", "%"+nom+"%");
-		return query.getResultList();
+	public List<Geek> findByAgeMax(int agemax) {
+			
+			return null;
+		}
+	
+	public List<Geek> findByAgeBetween(int agemin, int agemax) {
+		
+		return null;
 	}
 	
-	public List<Geek> findByPrenom(String prenom) {
-		String jpql =	"select g from Geek as g " +
-						"where g.nom like(:prenom)";
-		TypedQuery<Geek> query = entitymanager.createQuery(jpql, Geek.class);
-		query.setParameter("prenom", "%"+prenom+"%");
-		return query.getResultList();
-	}*/
-	
-	public List<Geek> findBySexe(String sexe) {
-		String jpql =	"select g from Geek as g " +
-						"where g.sexe = :sexe";
-		TypedQuery<Geek> query = entitymanager.createQuery(jpql, Geek.class);
-		query.setParameter("sexe", sexe);
-		return query.getResultList();
-	}
-	
-	public List<Geek> findByCriteria(String pseudo, String nom, String prenom, String sexe, int agemin, int agemax, long interet1, long interet2, long interet3) {
+	public List<Geek> findByCriteria(String pseudo, String nom, String prenom, String sexe) {
 		CriteriaBuilder qb = entitymanager.getCriteriaBuilder();
 		CriteriaQuery<Geek> cq = qb.createQuery(Geek.class);
 		Root<Geek> geek = cq.from(Geek.class);
-		
-		//TODO prise en compte de la casse !
 		List<Predicate> predicates = new ArrayList<Predicate>();
-		if(!StringUtils.isEmpty(nom)) {
-			predicates.add(qb.like(geek.<String>get("nom"), "%" + nom + "%"));
+		
+		// Les pseudos sont des valeurs sans doublons, mais on peut ne rechercher qu'une partie du pseudo
+		if(!StringUtils.isEmpty(pseudo)) {
+			predicates.add(qb.like(qb.lower(geek.<String>get("pseudo")), "%" + pseudo.toLowerCase() + "%"));
 		}
+		// Nom
+		if(!StringUtils.isEmpty(nom)) {
+			predicates.add(qb.like(qb.lower(geek.<String>get("nom")), "%" + nom.toLowerCase() + "%"));
+		}
+		// Prénom
 		if(!StringUtils.isEmpty(prenom)) {
-			predicates.add(qb.like(geek.<String>get("prenom"), "%" + prenom + "%"));
+			predicates.add(qb.like(qb.lower(geek.<String>get("prenom")), "%" + prenom.toLowerCase() + "%"));
+		}
+		// Sexe
+		if(!sexe.equals("-")) {
+			predicates.add(qb.equal(geek.<String>get("sexe"), sexe));
 		}
 		
 		cq.select(geek).where(predicates.toArray(new Predicate[]{}));

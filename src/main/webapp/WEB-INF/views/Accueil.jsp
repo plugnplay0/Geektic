@@ -23,12 +23,15 @@
 			</fieldset>
 			<fieldset>
 				<legend>Recherche par sexe</legend>
+				<label class="radio"><input class="radioSexe" type="radio" name="sexe" value="-" checked/>--- (ignorer) ---</label>
 				<label class="radio"><input class="radioSexe" type="radio" name="sexe" value="h"/><img class="imgSexe" src="/Geektic/images/Geek.png" alt="Geek"/></label>
-				<label class="radio"><input class="radioSexe" type="radio" name="sexe" value="f"/><img class="imgSexe" src="/Geektic/images/Geekette.png"/></label>
+				<label class="radio"><input class="radioSexe" type="radio" name="sexe" value="f"/><img class="imgSexe" src="/Geektic/images/Geekette.png" alt="Geekette"/></label>
 			</fieldset>
 			<fieldset>
 				<legend>Recherche par âge</legend>
+				Min :&nbsp;
 				<select name="agemin">
+					<option value="0">--- (ignorer) ---</option>
 					<option value="18">18</option>
 					<option value="19">19</option>
 					<option value="20">20</option>
@@ -63,7 +66,9 @@
 					<option value="49">49</option>
 					<option value="50">50</option>
 				</select><br/>
+				Max :&nbsp;
 				<select name="agemax">
+					<option value="0">--- (ignorer) ---</option>
 					<option value="18">18</option>
 					<option value="19">19</option>
 					<option value="20">20</option>
