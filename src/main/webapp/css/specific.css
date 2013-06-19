@@ -44,6 +44,10 @@ div.submit input {
 	height: 40px;
 }
 
+div.submit a:hover {
+	text-decoration: none;
+}
+
 input.radioSexe {
 	margin-top: 12px;
 }
@@ -56,6 +60,11 @@ td {
 	border: 1px solid #e5e5e5;
 	text-align: center;
 	
+}
+
+p.consult {
+	text-align: right;
+	font-style: italic;
 }
 
 

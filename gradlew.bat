@@ -1,7 +1,7 @@
-@set GRADLE_USER_HOME=
-@if "%GRADLE_USER_HOME%" == ./ @echo Tu dois definir la variable d'environnement GRADLE_USER_HOME dans le fichier gradlew.bat (qui doit contenir le chemin absolu d'un repertoire sur ton disque dur externe).&goto omega
+@set GRADLE_USER_HOME=G:\ECOLE\IUT Lyon 1\DASI\JEE\GEEKTIC\Geektic
+@if "%GRADLE_USER_HOME%" == "" @echo Tu dois definir la variable d'environnement GRADLE_USER_HOME dans le fichier gradlew.bat (qui doit contenir le chemin absolu d'un repertoire sur ton disque dur externe).&goto omega
 
-set JAVA_HOME="C:\Program Files\Java\jdk1.7.0_15"
+@rem set JAVA_HOME="C:\Program Files\Java\jdk1.7.0_15"
 
 @if "%DEBUG%" == "" @echo off
 @rem ##########################################################################

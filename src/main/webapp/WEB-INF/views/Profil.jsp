@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
@@ -14,7 +15,7 @@
 	
 	<body>
 		<div class="form-signin">
-			<div class="submit" align="center"><a href="/Geektic/accueil"><input type="button" value="Retourner aux résultats"/></a></div>
+			<div class="submit" align="center"><a href="/Geektic/accueil"><input type="button" value="Nouvelle recherche"/></a></div>
 			<fieldset>
 				<legend>
 					<c:if test="${geek.sexe eq 'h'}">
@@ -26,21 +27,24 @@
 					&nbsp;&nbsp;<c:out value="${geek.pseudo}"/>
 				</legend>
 				<p>
-					Nom : <c:out value="${geek.nom}"/><br/>
-					Prénom : <c:out value="${geek.prenom}"/><br/>
-					Date de naissance : <c:out value="${geek.dtnaiss}"/><br/>
-					Age : <c:out value="${geek.age}"/> ans
+					<strong>Nom :</strong> <c:out value="${geek.nom}"/><br/>
+					<strong>Prénom :</strong> <c:out value="${geek.prenom}"/><br/>
+					<strong>Date de naissance :</strong> <fmt:formatDate value="${geek.dtnaiss}" type="date" dateStyle="long"/><br/>
+					<strong>Age :</strong> <c:out value="${geek.age}"/> ans
 				</p>
 				<p>
-					Adresse e-mail : <c:out value="${geek.mail}"/>
+					<strong>Adresse e-mail :</strong> <c:out value="${geek.mail}"/>
 				</p>
 				<p>
-					Centres d'intérêt :<br/>
+					<strong>Centres d'intérêt :</strong><br/>
 					<ul>
 						<c:forEach var="interet" items="${geek.interets}">
 							<li><c:out value="${interet.libelle}"/></li>
 						</c:forEach>
 					</ul>
+				</p>
+				<p class="consult">
+					${nbConsults} consultation(s)
 				</p>
 			</fieldset>
 		</div>

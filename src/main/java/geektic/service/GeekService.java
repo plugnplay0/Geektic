@@ -3,6 +3,7 @@ package geektic.service;
 import geektic.dao.GeekDAO;
 import geektic.model.Geek;
 
+import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,12 +19,12 @@ public class GeekService {
 	@Autowired
 	GeekDAO geekDAO;
 	
-	public List<Geek> listerTous() {
-		List<Geek> liste = geekDAO.findAll();
-		return liste;
-	}
-	
 	public Geek trouverParId(long id) {
+		try {
+			geekDAO.majConsultation(id);
+		} catch(UnknownHostException e) {
+			e.printStackTrace();
+		}
 		Geek geek = geekDAO.findById(id);
 		return geek;
 	}
@@ -57,12 +58,11 @@ public class GeekService {
 		}
 		liste.removeAll(aRetirer);
 		
-		// Supprimer le geek 'flag' s'il y est
-		Geek flag = trouverParId(0);
-		if(liste.contains(flag)) {
-			liste.remove(flag);
-		}
-		
 		return liste;
+	}
+	
+	public long trouverNombreConsults(long geekId) {
+		Geek geek = geekDAO.findById(geekId);
+		return geek.getConsult();
 	}
 }

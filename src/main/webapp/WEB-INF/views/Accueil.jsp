@@ -23,7 +23,7 @@
 			</fieldset>
 			<fieldset>
 				<legend>Recherche par sexe</legend>
-				<label class="radio"><input class="radioSexe" type="radio" name="sexe" value="-" checked/>--- (ignorer) ---</label>
+				<label class="radio"><input type="radio" name="sexe" value="-" checked/>--- (ignorer) ---</label>
 				<label class="radio"><input class="radioSexe" type="radio" name="sexe" value="h"/><img class="imgSexe" src="/Geektic/images/Geek.png" alt="Geek"/></label>
 				<label class="radio"><input class="radioSexe" type="radio" name="sexe" value="f"/><img class="imgSexe" src="/Geektic/images/Geekette.png" alt="Geekette"/></label>
 			</fieldset>

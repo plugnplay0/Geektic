@@ -4,6 +4,7 @@
 		<class>geektic.model.Geek</class>
 		<class>geektic.model.Interet</class>
 		<class>geektic.model.Type</class>
+		<class>geektic.model.Audit</class>
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="org.hsqldb.jdbcDriver"/>
 			<property name="javax.persistence.jdbc.url" value="jdbc:hsqldb:hsql://localhost/geektic"/>

@@ -18,6 +18,14 @@ public class TypeDAO {
 	@PersistenceContext
 	private EntityManager entitymanager;
 	
+	public TypeDAO() {
+		
+	}
+	
+	public TypeDAO(EntityManager em) {
+		entitymanager = em;
+	}
+	
 	public void persist(Type type){
 		entitymanager.persist(type);
 	}

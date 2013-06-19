@@ -14,7 +14,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
-import javax.persistence.Transient;
 
 /**
  * The persistent class for the GEEK database table.
@@ -34,15 +33,13 @@ public class Geek {
 	private String sexe;
 	private Date dtnaiss;
 	private String mail;
+	private long consult;
 	
 	@ManyToMany(cascade = {CascadeType.ALL})
 	@JoinTable(	name="geek_interet",
 				joinColumns={@JoinColumn(name="geekId")},
 				inverseJoinColumns={@JoinColumn(name="interetId")})
 	private List<Interet> interets = new ArrayList<Interet>();
-	
-	@Transient
-	private int age;
 	
 	public long getGeekId() {
 		return geekId;
@@ -86,6 +83,18 @@ public class Geek {
 			lAge--;
 		}
 		return lAge;
+	}
+
+	public long getConsult() {
+		return consult;
+	}
+
+	public void setConsult(long consult) {
+		this.consult = consult;
+	}
+	
+	public void incrementerConsult() {
+		consult++;
 	}
 	
 }
