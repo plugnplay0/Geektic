@@ -1,10 +1,12 @@
 Geektic
 =======
 
-Auteur : Mélanie ROSSET
-Serveur utilisé : Tomcat
-Base de données : HSQLDB, nom  : Geektic
-Page d'accueil : /Geektic/accueil
+Informations générales :
+
+* Auteur : Mélanie ROSSET
+* Serveur utilisé : Tomcat
+* Base de données : HSQLDB, nom  : Geektic
+* Page d'accueil : /Geektic/accueil
 
 Remarques :
 
